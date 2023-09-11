@@ -8,46 +8,60 @@
 	margin: 0;
 	padding: 0;
 }
-#date{
+#date {
 	color: #fff;
-text-shadow: 2px 2px 0 #000,
-             -2px 2px 0 #000,
-             2px -2px 0 #000,
-             -2px -2px 0 #000;
-text-shadow: 2px 2px 1px #000,
-             -2px 2px 1px #000,
-             2px -2px 1px #000,
-             -2px -2px 1px #000;
+text-shadow: 
+	2px 2px 0 #000,
+	-2px 2px 0 #000,
+	2px -2px 0 #000,
+	-2px -2px 0 #000;
+text-shadow: 
+	2px 2px 1px #000,
+	-2px 2px 1px #000,
+	2px -2px 1px #000,
+	-2px -2px 1px #000;
 	font-size: 72px;
 	line-height: 1;
-	font-family: 'Lucida Grande',
-	'「ここに好きなフォントの名前を入れる」', '「ここに好きなフォントの名前を入れる」',
-	Meiryo, メイリオ, sans-serif;
+	font-family: 'Lucida Grande', Meiryo, メイリオ, sans-serif;
 }
 </style>
 </head>
 <body>
-  <p id="date" />
-  <script language="JavaScript">
-  var yyyymmddhhmiss = function() {
-    var date = new Date();
-    var yyyy = date.getFullYear();
-    var mm = toDoubleDigits(date.getMonth() + 1);
-    var dd = toDoubleDigits(date.getDate());
-    var hh = toDoubleDigits(date.getHours());
-    var mi = toDoubleDigits(date.getMinutes());
-    var ss = toDoubleDigits(date.getSeconds())
-    var element = document.getElementById("date");
-    element.innerHTML = 'Japan Time: '+ yyyy + '.' + mm + '.' + dd + ' ' + hh + ':' + mi + ':' + ss;
-  };
-  var toDoubleDigits = function(num) {
-    num += "";
-    if (num.length === 1) {
-      num = "0" + num;
-    }
-   return num;
-  };
-  setInterval(yyyymmddhhmiss, 1000);
-  </script>
+	<p id="date" />
+	<script language="JavaScript">
+		var request = new XMLHttpRequest();
+		request.open('HEAD', window.location.href, true);
+		request.send();
+		request.onreadystatechange = function() {
+			if (this.readyState === 4) {
+				var serverDate = new Date(request.getResponseHeader('Date'));
+				console.log(serverDate);
+				// 例) => Wed Feb 16 2017 12:00:00 GMT+0900
+			}
+		}
+
+		var yyyymmddhhmiss = function() {
+			//var date = new Date();
+			var date = new Date(request.getResponseHeader('Date'));
+			var yyyy = date.getFullYear();
+			var mm = toDoubleDigits(date.getMonth() + 1);
+			var dd = toDoubleDigits(date.getDate());
+			var hh = toDoubleDigits(date.getHours());
+			var mi = toDoubleDigits(date.getMinutes());
+			var ss = toDoubleDigits(date.getSeconds())
+			var element = document.getElementById("date");
+			element.innerHTML = 'Japan Time: '+ yyyy + '.' + mm + '.' + dd + ' ' + hh + ':' + mi + ':' + ss;
+		};
+
+		var toDoubleDigits = function(num) {
+			num += "";
+			if (num.length === 1) {
+				num = "0" + num;
+			}
+			return num;
+		};
+
+		setInterval(yyyymmddhhmiss, 1000);
+  	</script>
 </body>
 </html>
