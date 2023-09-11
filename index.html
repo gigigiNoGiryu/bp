@@ -45,18 +45,32 @@ text-shadow:
 
 		var yyyymmddhhmiss = function() {
 			//現在のPCの日時
-			var date = new Date();
+			var datePC = new Date();
 			//サーバー時間との差分を反映
-			date = date - diffTime ;
+			var dateServer = new Date(datePC - diffTime);
 
-			var yyyy = date.getFullYear();
-			var mm = toDoubleDigits(date.getMonth() + 1);
-			var dd = toDoubleDigits(date.getDate());
-			var hh = toDoubleDigits(date.getHours());
-			var mi = toDoubleDigits(date.getMinutes());
-			var ss = toDoubleDigits(date.getSeconds())
+			// ID付与(#date)
 			var element = document.getElementById("date");
-			element.innerHTML = 'Japan Time: '+ yyyy + '.' + mm + '.' + dd + ' ' + hh + ':' + mi + ':' + ss;
+
+			//PC時間の成形
+			var yyyy_A = datePC.getFullYear();
+			var mm_A = toDoubleDigits(datePC.getMonth() + 1);
+			var dd_A = toDoubleDigits(datePC.getDate());
+			var hh_A = toDoubleDigits(datePC.getHours());
+			var mi_A = toDoubleDigits(datePC.getMinutes());
+			var ss_A = toDoubleDigits(datePC.getSeconds())
+
+			//サーバー時間の成形
+			var yyyy_B = dateServer.getFullYear();
+			var mm_B = toDoubleDigits(dateServer.getMonth() + 1);
+			var dd_B = toDoubleDigits(dateServer.getDate());
+			var hh_B = toDoubleDigits(dateServer.getHours());
+			var mi_B = toDoubleDigits(dateServer.getMinutes());
+			var ss_B = toDoubleDigits(dateServer.getSeconds())
+
+			//表示
+			element.innerHTML = 'ユーザー: '+ yyyy_A + '.' + mm_A + '.' + dd_A + ' ' + hh_A + ':' + mi_A + ':' + ss_A
+					+ '</br>' + 'サーバー: '+ yyyy_B + '.' + mm_B + '.' + dd_B + ' ' + hh_B + ':' + mi_B + ':' + ss_B;
 		};
 
 		var toDoubleDigits = function(num) {
