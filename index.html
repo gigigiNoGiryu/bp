@@ -33,10 +33,10 @@ text-shadow:
 		var request = new XMLHttpRequest();
 		request.open('HEAD', window.location.href, true);
 		request.send();
+		var nowDate = new Date();
 		request.onreadystatechange = function() {
 			if (this.readyState === 4) {
 				var serverDate = new Date(request.getResponseHeader('Date')); // 例) => Wed Feb 16 2017 12:00:00 GMT+0900
-				var nowDate = new Date();
 				
 				// 差を求める
 				diffTime = serverDate.getTime() - nowDate.getTime();
