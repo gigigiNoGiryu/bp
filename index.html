@@ -66,12 +66,11 @@ text-shadow:
 			var hh_B = toDoubleDigits(dateServer.getHours());
 			var mi_B = toDoubleDigits(dateServer.getMinutes());
 			var ss_B = toDoubleDigits(dateServer.getSeconds());
-			var element_B = document.getElementById("dateServer");
 
 			//表示
-			element_A.innerHTML = 'ユーザー: ' + hh_A + ':' + mi_A + ':' + ss_A
+			element.innerHTML = 'ユーザー: ' + hh_A + ':' + mi_A + ':' + ss_A
 					+ '</br>'+ 'サーバー: ' + hh_B + ':' + mi_B + ':' + ss_B;
-			//element_A.innerHTML = 'ユーザー: '+ yyyy_A + '.' + mm_A + '.' + dd_A + ' ' + hh_A + ':' + mi_A + ':' + ss_A
+			//element.innerHTML = 'ユーザー: '+ yyyy_A + '.' + mm_A + '.' + dd_A + ' ' + hh_A + ':' + mi_A + ':' + ss_A
 			//		+ '</br>'+ 'サーバー: '+ yyyy_B + '.' + mm_B + '.' + dd_B + ' ' + hh_B + ':' + mi_B + ':' + ss_B;
 		};
 
