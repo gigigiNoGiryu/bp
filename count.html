@@ -12,22 +12,6 @@ body{
 	/* 背景色指定 */
 	background-color:#00FF00;
 }
-#count {
-	color: #fff;
-	text-shadow: 
-		2px 2px 0 #000,
-		-2px 2px 0 #000,
-		2px -2px 0 #000,
-		-2px -2px 0 #000;
-	text-shadow: 
-		2px 2px 1px #000,
-		-2px 2px 1px #000,
-		2px -2px 1px #000,
-		-2px -2px 1px #000;
-	font-size: 72px;
-	font-size: 120px;
-	font-family: 'Lucida Grande', Meiryo, メイリオ, sans-serif;
-}
 .hiki {
 	background: #00FF00;
 	text-align: center;
@@ -49,12 +33,10 @@ body{
 </style>
 </head>
 <body>
-	<p id="count">0</p>
-	<p id="hiki"></p><HTML>
 <center>
 <form>
 	<span style="white-space:nowrap;">
-		<div class="hiki"><input type=text name=mnt value=10  class="hiki">匹</div>
+		<div class="hiki"><input type=text name=mnt value=0  class="hiki">匹</div>
 	</span>
 <br>
 <input type=button value="＋" onClick="javascript:this.form.mnt.value++;"> 
