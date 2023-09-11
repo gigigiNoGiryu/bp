@@ -30,6 +30,10 @@ body{
 	font-size: 120px;
 	font-family: 'Lucida Grande', Meiryo, メイリオ, sans-serif;
 }
+.btn {
+	width: 10em;
+	height:3em;
+}
 </style>
 </head>
 <body>
@@ -39,8 +43,8 @@ body{
 		<div class="hiki"><input type=text name=mnt value=0  class="hiki">匹</div>
 	</span>
 <br>
-<input type=button value="＋" onClick="javascript:this.form.mnt.value++;"> 
-<input type=button value="－" onClick="javascript:this.form.mnt.value--;">
+<input type=button value="＋" class="btn" onClick="javascript:this.form.mnt.value++;"> 
+<input type=button value="－" class="btn" onClick="javascript:this.form.mnt.value--;">
 </form>
 </center>
 </body>
