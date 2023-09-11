@@ -47,9 +47,9 @@ text-shadow:
 			//現在のPCの日時
 			var datePC = new Date();
 			//サーバー時間との差分を反映
-			var dateServer = new Date(datePC - diffTime);
+			var dateServer = new Date(datePC.getTime() - diffTime);
 			//サーバー時間との差分を反映2
-			var dateServer2 = new Date(datePC + diffTime);
+			var dateServer2 = new Date(datePC.getTime() + diffTime);
 
 			// ID付与(#date)
 			var element = document.getElementById("date");
