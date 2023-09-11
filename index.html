@@ -48,10 +48,7 @@ text-shadow:
 			var datePC = new Date();
 			//サーバー時間との差分を反映
 			var dateServer = new Date(datePC.getTime() - diffTime);
-			//サーバー時間との差分を反映2
-			var dateServer2 = new Date(datePC.getTime() + diffTime);
 
-			// ID付与(#date)
 			var element = document.getElementById("date");
 
 			//PC時間の成形
@@ -60,7 +57,7 @@ text-shadow:
 			var dd_A = toDoubleDigits(datePC.getDate());
 			var hh_A = toDoubleDigits(datePC.getHours());
 			var mi_A = toDoubleDigits(datePC.getMinutes());
-			var ss_A = toDoubleDigits(datePC.getSeconds())
+			var ss_A = toDoubleDigits(datePC.getSeconds());
 
 			//サーバー時間の成形
 			var yyyy_B = dateServer.getFullYear();
@@ -68,20 +65,14 @@ text-shadow:
 			var dd_B = toDoubleDigits(dateServer.getDate());
 			var hh_B = toDoubleDigits(dateServer.getHours());
 			var mi_B = toDoubleDigits(dateServer.getMinutes());
-			var ss_B = toDoubleDigits(dateServer.getSeconds())
-
-			//サーバー時間の成形
-			var yyyy_B2 = dateServer2.getFullYear();
-			var mm_B2 = toDoubleDigits(dateServer2.getMonth() + 1);
-			var dd_B2 = toDoubleDigits(dateServer2.getDate());
-			var hh_B2 = toDoubleDigits(dateServer2.getHours());
-			var mi_B2 = toDoubleDigits(dateServer2.getMinutes());
-			var ss_B2 = toDoubleDigits(dateServer2.getSeconds())
+			var ss_B = toDoubleDigits(dateServer.getSeconds());
+			var element_B = document.getElementById("dateServer");
 
 			//表示
-			element.innerHTML = 'ユーザー: '+ yyyy_A + '.' + mm_A + '.' + dd_A + ' ' + hh_A + ':' + mi_A + ':' + ss_A
-					+ '</br>' + 'サーバー: '+ yyyy_B + '.' + mm_B + '.' + dd_B + ' ' + hh_B + ':' + mi_B + ':' + ss_B
-					+ '</br>' + 'サーバー: '+ yyyy_B2 + '.' + mm_B2 + '.' + dd_B2 + ' ' + hh_B2 + ':' + mi_B2 + ':' + ss_B2;
+			element_A.innerHTML = 'ユーザー: ' + hh_A + ':' + mi_A + ':' + ss_A
+					+ '</br>'+ 'サーバー: ' + hh_B + ':' + mi_B + ':' + ss_B;
+			//element_A.innerHTML = 'ユーザー: '+ yyyy_A + '.' + mm_A + '.' + dd_A + ' ' + hh_A + ':' + mi_A + ':' + ss_A
+			//		+ '</br>'+ 'サーバー: '+ yyyy_B + '.' + mm_B + '.' + dd_B + ' ' + hh_B + ':' + mi_B + ':' + ss_B;
 		};
 
 		var toDoubleDigits = function(num) {
