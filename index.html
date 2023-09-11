@@ -29,20 +29,26 @@ text-shadow:
 <body>
 	<p id="date" />
 	<script language="JavaScript">
+		var diffTime = 0;
 		var request = new XMLHttpRequest();
 		request.open('HEAD', window.location.href, true);
 		request.send();
 		request.onreadystatechange = function() {
 			if (this.readyState === 4) {
-				var serverDate = new Date(request.getResponseHeader('Date'));
-				console.log(serverDate);
-				// 例) => Wed Feb 16 2017 12:00:00 GMT+0900
+				var serverDate = new Date(request.getResponseHeader('Date')); // 例) => Wed Feb 16 2017 12:00:00 GMT+0900
+				var nowDate = new Date();
+				
+				// 差を求める
+				diffTime = serverDate.getTime() - nowDate.getTime();
 			}
 		}
 
 		var yyyymmddhhmiss = function() {
-			//var date = new Date();
-			var date = new Date(request.getResponseHeader('Date'));
+			//現在のPCの日時
+			var date = new Date();
+			//サーバー時間との差分を反映
+			date = date - diffTime ;
+
 			var yyyy = date.getFullYear();
 			var mm = toDoubleDigits(date.getMonth() + 1);
 			var dd = toDoubleDigits(date.getDate());
